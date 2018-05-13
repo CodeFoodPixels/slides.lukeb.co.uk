@@ -4,7 +4,7 @@ const rimraf = require('rimraf');
 const fs = require('fs');
 const redirects = require('./redirects.json');
 
-rimraf('docs/!(404.html)', (err) => {
+rimraf('docs/!(404.html|CNAME)', (err) => {
     if (err) {
         throw err;
     }
