@@ -22,7 +22,7 @@ rimraf('docs/!(404.html|CNAME)', (err) => {
     <meta http-equiv="refresh" content="0;url=${redirects[key]}" />
 </head>
 <body>
-    <a href="${redirects[key]}">CLick here if you're not redirected</a>
+    <a href="${redirects[key]}">Click here if you're not redirected</a>
 </body>
 </html>
 `
