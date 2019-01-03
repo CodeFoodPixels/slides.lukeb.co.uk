@@ -1,37 +1,13 @@
 'use strict';
 
-const rimraf = require('rimraf');
 const fs = require('fs');
 const redirects = require('./redirects.json');
 
-rimraf('docs/!(404.html|CNAME)', (err) => {
-    if (err) {
-        throw err;
-    }
+fs.mkdirSync(`build`);
 
-    for (let key in redirects) {
-        fs.mkdir(`docs/${key}`, (err) => {
-            if (err) {
-                throw err;
-            }
+fs.copyFileSync(`404.html`, `build/404.html`);
 
-            const file = `<!DOCTYPE html>
-<html>
-<head>
-    <title>Redirecting...</title>
-    <meta http-equiv="refresh" content="0;url=${redirects[key]}" />
-</head>
-<body>
-    <a href="${redirects[key]}">Click here if you're not redirected</a>
-</body>
-</html>
-`
+for (let slug in redirects) {
+    fs.appendFileSync(`build/_redirects`, `/${slug} ${redirects[slug]} 301!\n`);
+}
 
-            fs.writeFile(`docs/${key}/index.html`, file, (err) => {
-                if (err) {
-                    throw err;
-                }
-            });
-        })
-    }
-})

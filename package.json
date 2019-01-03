@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Statically generated redirection",
   "main": "script.js",
-  "directories": {
-    "doc": "docs"
-  },
   "scripts": {
     "build": "node build.js"
   },
@@ -20,7 +17,5 @@
   },
   "homepage": "https://github.com/lukeb-uk/slides.lukeb.co.uk#readme",
   "dependencies": {
-    "mkdirp": "^0.5.1",
-    "rimraf": "^2.6.2"
   }
 }
